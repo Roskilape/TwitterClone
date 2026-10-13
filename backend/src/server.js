@@ -5,6 +5,7 @@ import { clerkMiddleware } from "@clerk/express";
 import { connectDB } from "./config/db.js";
 import userRoute from "./routes/user.route.js";
 import postRoute from "./routes/post.route.js";
+import commentRoutes from "/routes/comment.route.js";
 
 const app = express();
 
@@ -16,11 +17,12 @@ app.get("/", (req, res) => res.send("hello from server"));
 
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
+app.use("/api/comments", commentRoutes);
 
 // error handling middleware
 app.use((err, req, res, next) => {
   console.error("unhandled error", err);
-  res.status(500).json({ error: err.message || "internal server error" });
+  res.status(500).json({ error: "internal server error" });
 });
 
 const startServer = async () => {
