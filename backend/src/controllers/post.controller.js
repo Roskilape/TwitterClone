@@ -102,7 +102,7 @@ export const createPost = asyncHandler(async (req, res) => {
     user: user._id,
     content: content || "",
     image: imageUrl,
-    PublicId: imagePublicId,
+    publicId: imagePublicId,
   });
 
   res.status(201).json({ post });
@@ -164,7 +164,7 @@ export const deletePost = asyncHandler(async (req, res) => {
   }
 
   if (post.imageUrl) {
-    const result = cloudinary.uploader.destroy(post.publicId);
+    const result = await cloudinary.uploader.destroy(post.publicId);
     if (result.result !== "ok" && result.result !== "not found") {
       throw new Error("Cloudinary image deletion failed");
     }

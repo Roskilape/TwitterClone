@@ -18,9 +18,9 @@ app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 
 // error handling middleware
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   console.error("unhandled error", err);
-  res.status(500).json({ error: message || "internal server error" });
+  res.status(500).json({ error: err.message || "internal server error" });
 });
 
 const startServer = async () => {
