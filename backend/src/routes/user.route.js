@@ -7,7 +7,6 @@ import {
   updateProfile,
 } from "../controllers/user.controller.js";
 import protectRoute from "../middleware/auth.middleware.js";
-import { getNotifications } from "../controllers/notification.controller.js";
 const router = express.Router();
 
 //public route

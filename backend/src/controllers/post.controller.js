@@ -1,7 +1,10 @@
 import asyncHandler from "express-async-handler";
-import Post from "../models/post.model";
-import User from "../models/user.model";
-import cloudinary from "../config/cloudinary";
+import Post from "../models/post.model.js";
+import User from "../models/user.model.js";
+import cloudinary from "../config/cloudinary.js";
+import Notification from "../models/notification.model.js";
+import Comment from "../models/comment.model.js";
+import { getAuth } from "@clerk/express";
 
 export const getPosts = asyncHandler(async (req, res) => {
   const posts = await Post.find()
@@ -163,7 +166,7 @@ export const deletePost = asyncHandler(async (req, res) => {
       .json({ error: "You can only delete your own posts" });
   }
 
-  if (post.imageUrl) {
+  if (post.publicId) {
     const result = await cloudinary.uploader.destroy(post.publicId);
     if (result.result !== "ok" && result.result !== "not found") {
       throw new Error("Cloudinary image deletion failed");
