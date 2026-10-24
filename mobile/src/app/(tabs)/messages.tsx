@@ -11,10 +11,8 @@ import {
 } from "react-native";
 import { ConversationType, CONVERSATIONS } from "../../../data/consversation";
 import { Feather } from "@expo/vector-icons";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-const messagesScreen = () => {
-  const insets = useSafeAreaInsets();
+const MessagesScreen = () => {
   const [searchText, setSearchText] = useState("");
   const [conversationsList, setConversationsList] = useState(CONVERSATIONS);
   const [selectedConversation, setSelectedConversation] =
@@ -98,7 +96,7 @@ const messagesScreen = () => {
       <ScrollView
         className="flex-1"
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 100 + insets.bottom }}
+        contentContainerStyle={{ paddingBottom: 100 }}
       >
         {conversationsList.map((conversation) => (
           <TouchableOpacity
@@ -254,4 +252,4 @@ const messagesScreen = () => {
   );
 };
 
-export default messagesScreen;
+export default MessagesScreen;

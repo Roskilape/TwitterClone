@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect, Stack, Tabs } from "expo-router";
+import { Redirect, Tabs } from "expo-router";
 import { Feather } from "@expo/vector-icons";
 import { useAuth } from "@clerk/expo";
 

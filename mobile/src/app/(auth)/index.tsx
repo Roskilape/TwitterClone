@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import { useSocialAuth } from "../../../hooks/useSocialAuth";
 
-export default function index() {
+export default function Index() {
   const { handleSocialAuth, isLoading } = useSocialAuth();
 
   return (

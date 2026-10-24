@@ -30,7 +30,7 @@ const TRENDING_TOPICS = [
   },
 ];
 
-const searchScreen = () => {
+const SearchScreen = () => {
   return (
     <View className="px-4 py-3 border-b border-gray-100">
       <View className="flex-row items-center bg-gray-50 rounded-full px-4 py-3">
@@ -66,4 +66,4 @@ const searchScreen = () => {
   );
 };
 
-export default searchScreen;
+export default SearchScreen;
