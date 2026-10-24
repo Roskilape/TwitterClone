@@ -10,7 +10,7 @@ export const aj = arcjet({
     // shield protects your app from common attacks e.g SQL injection, XSS, CSRF attacks
     shield({ mode: "LIVE" }),
     detectBot({
-      mode: "LIVE",
+      mode: "DRY_RUN",
       allow: [
         "CATEGORY:SEARCH_ENGINE",
         // allow legitimate search engine bots
