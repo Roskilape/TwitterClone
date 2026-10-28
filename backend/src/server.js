@@ -7,6 +7,7 @@ import userRoute from "./routes/user.route.js";
 import postRoute from "./routes/post.route.js";
 import commentRoutes from "./routes/comment.route.js";
 import { arcjetMiddleware } from "./middleware/arcjet.middleware.js";
+import notificationRoute from "./routes/notification.route.js";
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.get("/", (req, res) => res.send("hello from server"));
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/comments", commentRoutes);
+app.use("/api/notifications", notificationRoute);
 
 // error handling middleware
 app.use((err, req, res, next) => {
