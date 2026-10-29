@@ -20,7 +20,7 @@ const PostCard = ({
 	isLiked,
 	onComment,
 }: PostCardProps) => {
-	const isOwnPost = _id === currentUser._id;
+	const isOwnPost = user._id === currentUser._id;
 
 	const handleDelete = () => {
 		Alert.alert("Delete Post", "Are you sure you want to delete this post?", [
@@ -39,7 +39,6 @@ const PostCard = ({
 					source={{ uri: user.profilePicture || "" }}
 					className="w-12 h-12 rounded-full mr-3"
 				/>
-
 				<View className="flex-1">
 					<View className="flex-row items-center justify-between mb-1">
 						<View className="flex-row items-center">

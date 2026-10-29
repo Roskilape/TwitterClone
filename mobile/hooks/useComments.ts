@@ -28,7 +28,7 @@ export const useComments = () => {
 	});
 
 	const createComment = (postId: string) => {
-		if (commentText.trim()) {
+		if (!commentText.trim()) {
 			Alert.alert("Empty Comment", "Please write something before posting!");
 			return;
 		}
