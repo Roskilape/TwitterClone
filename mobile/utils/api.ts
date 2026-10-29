@@ -36,9 +36,10 @@ export const postApi = {
 	getPosts: (api: AxiosInstance) => api.get("/posts"),
 	getUserPost: (api: AxiosInstance, username: string) =>
 		api.get(`/posts/user/${username}`),
-	likePost: (api: AxiosInstance, postId: string) => api.post(`/post/${postId}`),
+	likePost: (api: AxiosInstance, postId: string) =>
+		api.post(`/posts/${postId}/like`),
 	deletePost: (api: AxiosInstance, postId: string) =>
-		api.delete(`/posts/${postId}`),
+		api.delete(`/posts/${postId}/delete`),
 };
 
 export const commentApi = {

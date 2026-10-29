@@ -4,13 +4,13 @@ import {
   Text,
   Alert,
   TouchableOpacity,
-  Modal,
   TextInput,
   Image,
   ScrollView,
 } from "react-native";
 import { ConversationType, CONVERSATIONS } from "../../../data/consversation";
 import { Feather } from "@expo/vector-icons";
+import SheetModal from "@/components/SheetModal";
 
 const MessagesScreen = () => {
   const [searchText, setSearchText] = useState("");
@@ -147,10 +147,9 @@ const MessagesScreen = () => {
         </Text>
       </View>
 
-      <Modal
+      <SheetModal
         visible={isChatOpen}
-        animationType="slide"
-        presentationStyle="pageSheet"
+        onClose={closeChatModal}
       >
         {selectedConversation && (
           <View className="flex-1">
@@ -247,7 +246,7 @@ const MessagesScreen = () => {
             </View>
           </View>
         )}
-      </Modal>
+      </SheetModal>
     </View>
   );
 };

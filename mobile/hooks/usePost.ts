@@ -11,6 +11,7 @@ export const usePosts = () => {
 		isLoading,
 		error,
 		refetch,
+		isRefetching,
 	} = useQuery({
 		queryKey: ["posts"],
 		queryFn: () => postApi.getPosts(api),
@@ -41,5 +42,6 @@ export const usePosts = () => {
 		toggleLike: (postId: string) => likePostMutation.mutate(postId),
 		deletePost: (postId: string) => deletePostMutation.mutate(postId),
 		checkIsLiked,
+		isRefetching,
 	};
 };
