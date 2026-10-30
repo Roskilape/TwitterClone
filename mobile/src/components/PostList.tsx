@@ -12,8 +12,18 @@ import PostCard from "./PostCard";
 import { Post } from "../../types/index.types";
 import { useState } from "react";
 import CommentsModal from "./CommentsModal";
+import ProfileComponentHeader from "./ProfileComponentHeader";
+import { Ionicons } from "@expo/vector-icons";
+import SignOutButton from "./SignOutButton";
+import PostComposer from "./PostComposer";
 
-const PostList = ({ username }: { username?: string }) => {
+interface PostListProps {
+	username?: string;
+	screenType: "home" | "profile";
+	openEditModal?: () => void;
+}
+
+const PostList = ({ username, screenType, openEditModal }: PostListProps) => {
 	const { currentUser } = useCurrentUser();
 	const [selectedPostId, setSelectedPostId] = useState<string | null>();
 	const {
@@ -24,6 +34,7 @@ const PostList = ({ username }: { username?: string }) => {
 		refetch,
 		deletePost,
 		checkIsLiked,
+		isRefetching,
 	} = usePosts(username);
 
 	const selectedPost = selectedPostId
@@ -70,6 +81,25 @@ const PostList = ({ username }: { username?: string }) => {
 					<View className="p-8 items-center">
 						<Text className="text-gray-500">No post yet</Text>
 					</View>
+				}
+				ListHeaderComponent={
+					screenType === "profile" ? (
+						<ProfileComponentHeader
+							currentUser={currentUser}
+							openEditModal={openEditModal ? openEditModal : () => {}}
+							totalPost={posts.length}
+						/>
+					) : (
+						<>
+							<View className="flex-row justify-between px-4 py-3 border-b border-gray-100">
+								<Ionicons name="logo-twitter" size={24} color="#1DA1F2" />
+								<Text className="text-xl font-bold text-gray-900">Home</Text>
+								<SignOutButton />
+							</View>
+
+							<PostComposer />
+						</>
+					)
 				}
 				refreshControl={
 					<RefreshControl

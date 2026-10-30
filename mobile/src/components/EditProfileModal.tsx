@@ -7,6 +7,7 @@ import {
 	ScrollView,
 	TextInput,
 } from "react-native";
+import SheetModal from "./SheetModal";
 
 interface EditProfileModalProps {
 	isVisible: boolean;
@@ -35,10 +36,7 @@ const EditProfileModal = ({
 		onClose();
 	};
 	return (
-		<Modal
-			visible={isVisible}
-			animationType="slide"
-			presentationStyle="pageSheet">
+		<SheetModal visible={isVisible} onClose={onClose}>
 			<View className="flex-row items-center justify-between px-4 py-3 border-b border-gray-100">
 				<TouchableOpacity onPress={onClose}>
 					<Text className="text-blue-500 text-lg">Cancel</Text>
@@ -105,7 +103,7 @@ const EditProfileModal = ({
 					</View>
 				</View>
 			</ScrollView>
-		</Modal>
+		</SheetModal>
 	);
 };
 
