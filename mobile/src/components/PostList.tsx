@@ -13,7 +13,7 @@ import { Post } from "../../types/index.types";
 import { useState } from "react";
 import CommentsModal from "./CommentsModal";
 
-const PostList = () => {
+const PostList = ({ username }: { username?: string }) => {
 	const { currentUser } = useCurrentUser();
 	const [selectedPostId, setSelectedPostId] = useState<string | null>();
 	const {
@@ -24,8 +24,7 @@ const PostList = () => {
 		refetch,
 		deletePost,
 		checkIsLiked,
-		isRefetching,
-	} = usePosts();
+	} = usePosts(username);
 
 	const selectedPost = selectedPostId
 		? posts.find((p: Post) => p._id === selectedPostId)
