@@ -11,6 +11,7 @@ export const usePosts = (username?: string) => {
 		isLoading,
 		error,
 		refetch,
+		isRefetching,
 	} = useQuery({
 		queryKey: username ? ["userPost", username] : ["posts"],
 		queryFn: () =>
@@ -49,5 +50,6 @@ export const usePosts = (username?: string) => {
 		toggleLike: (postId: string) => likePostMutation.mutate(postId),
 		deletePost: (postId: string) => deletePostMutation.mutate(postId),
 		checkIsLiked,
+		isRefetching,
 	};
 };

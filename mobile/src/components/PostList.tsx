@@ -4,6 +4,7 @@ import {
 	ActivityIndicator,
 	TouchableOpacity,
 	FlatList,
+	RefreshControl,
 } from "react-native";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { usePosts } from "../../hooks/usePost";
@@ -50,13 +51,6 @@ const PostList = ({ username }: { username?: string }) => {
 		);
 	}
 
-	if (posts.length === 0) {
-		return (
-			<View className="p-8 items-center">
-				<Text className="text-gray-500">No post yet</Text>
-			</View>
-		);
-	}
 	return (
 		<View>
 			<FlatList
@@ -72,6 +66,18 @@ const PostList = ({ username }: { username?: string }) => {
 					/>
 				)}
 				keyExtractor={(item) => item._id}
+				ListEmptyComponent={
+					<View className="p-8 items-center">
+						<Text className="text-gray-500">No post yet</Text>
+					</View>
+				}
+				refreshControl={
+					<RefreshControl
+						refreshing={isRefetching}
+						onRefresh={refetch}
+						tintColor={"#1DA1F2"}
+					/>
+				}
 			/>
 
 			<CommentsModal

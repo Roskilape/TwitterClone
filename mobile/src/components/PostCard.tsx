@@ -39,7 +39,6 @@ const PostCard = ({
 					source={{ uri: user.profilePicture || "" }}
 					className="w-12 h-12 rounded-full mr-3"
 				/>
-
 				<View className="flex-1">
 					<View className="flex-row items-center justify-between mb-1">
 						<View className="flex-row items-center">
